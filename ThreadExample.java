@@ -1,12 +1,8 @@
-package tp.thread.Excercice2;
+package tp.thread.Exercice1;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-class ThreadExample implements Runnable {
+public class ThreadExample implements Runnable {
     private int id;
     private int counter;
-    private boolean alive = true;
 
     public ThreadExample(int id) {
         this.id = id;
@@ -15,10 +11,10 @@ class ThreadExample implements Runnable {
     // La méthode run() contient le code que le thread doit exécuter
     @Override
     public void run() {
-        // Le thread continue à exécuter la boucle tant qu'il est en vie
-        while (alive) {
-            // Le thread affiche le message
-            System.out.println("Hello le thread " + id + ", counter = " + counter);
+        // Le thread continue à exécuter la boucle tant que le compteur est inférieur à 5
+        while (counter < 5) {
+            // Le thread affiche le message "Hello from Thread {id}, counter = {counter}"
+            System.out.println("Hello from Thread " + id + ", counter = " + counter);
 
             // Le compteur est incrémenté à chaque itération
             counter++;
@@ -31,11 +27,5 @@ class ThreadExample implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("Thread " + id + " est terminé.");
-    }
-
-    // Méthode pour tuer le thread
-    public void kill() {
-        alive = false;
     }
 }
